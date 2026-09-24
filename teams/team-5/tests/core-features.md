@@ -6,8 +6,8 @@
 ## Core features
 | # | ID | Feature | Source | Rules | Tested rules | Note |
 | - | -- | ------- | ------ | ----- | ------------ | ---- |
-| 1 | FD-01 | Browse restaurants | spec | 5 | 0 | |
-| 2 | FD-02 | Search and filter | spec | 6 | 0 | |
+| 1 | FD-01 | Browse restaurants | spec | 5 | 5 | |
+| 2 | FD-02 | Search and filter | spec | 6 | 6 | |
 | 3 | FD-03 | Restaurant menu | spec | 6 | 0 | |
 | 4 | FD-05 | Cart | spec | 8 | 0 | |
 | 5 | FD-06 | Checkout | spec | 4 | 0 | |
@@ -16,25 +16,25 @@
 
 ## Traceability
 ### FD-01 · Browse restaurants
-| Rule | Rule text (short) | Tests |
-| ---- | ----------------- | ----- |
-| FD-01.1 | Card shows name, cuisines, rating, delivery time range, delivery fee (or Free) | no test |
-| FD-01.2 | Card shows current promotion when it has one | no test |
-| FD-01.3 | Selecting a card opens the restaurant's page | no test |
-| FD-01.4 | View All shows the full list of restaurants | no test |
-| FD-01.5 | Non-delivering restaurant greyed out, *Not available at your address* badge, counted in subtitle, cannot be opened | no test |
+| Rule | Rule text (short) | Tests | Status |
+| ---- | ----------------- | ----- | ------ |
+| FD-01.1 | Card shows name, cuisines, rating, delivery time range, delivery fee (or Free) | `tests/fd-01.spec.ts` › FD-01.1 · Card shows name, cuisines, rating, delivery time range, delivery fee (or Free) | PASS |
+| FD-01.2 | Card shows current promotion when it has one | `tests/fd-01.spec.ts` › FD-01.2 · Card shows current promotion when it has one | PASS |
+| FD-01.3 | Selecting a card opens the restaurant's page | `tests/fd-01.spec.ts` › FD-01.3 · Selecting a card opens the restaurant's page | PASS |
+| FD-01.4 | View All shows the full list of restaurants | `tests/fd-01.spec.ts` › FD-01.4 · View All shows the full list of restaurants | PASS — weak check: spec gives no list size, test only proves no restaurant disappears |
+| FD-01.5 | Non-delivering restaurant greyed out, *Not available at your address* badge, counted in subtitle, cannot be opened | `tests/fd-01.spec.ts` › FD-01.5 · Non-delivering restaurant greyed out, Not available at your address badge, counted in subtitle, cannot be opened | BUG — spec: "It cannot be opened." App: clicking Koliba u Jána opens /restaurant/koliba-u-jana (badge, grey, subtitle count OK) |
 
 Unmatched: none
 
 ### FD-02 · Search and filter
-| Rule | Rule text (short) | Tests |
-| ---- | ----------------- | ----- |
-| FD-02.1 | Search finds by restaurant name or dish name | no test |
-| FD-02.2 | Search ignores upper and lower case | no test |
-| FD-02.3 | Results update while typing; Search button gives the same result | no test |
-| FD-02.4 | Cuisine chips show only that cuisine; All shows every restaurant | no test |
-| FD-02.5 | Search and cuisine chip apply together | no test |
-| FD-02.6 | No match shows *No restaurants found* with a hint | no test |
+| Rule | Rule text (short) | Tests | Status |
+| ---- | ----------------- | ----- | ------ |
+| FD-02.1 | Search finds by restaurant name or dish name | `tests/fd-02.spec.ts` › FD-02.1 · Search finds by restaurant name or dish name | PASS |
+| FD-02.2 | Search ignores upper and lower case | `tests/fd-02.spec.ts` › FD-02.2 · Search ignores upper and lower case | PASS |
+| FD-02.3 | Results update while typing; Search button gives the same result | `tests/fd-02.spec.ts` › FD-02.3 · Results update while typing; Search button gives the same result | PASS |
+| FD-02.4 | Cuisine chips show only that cuisine; All shows every restaurant | `tests/fd-02.spec.ts` › FD-02.4 · Cuisine chips show only that cuisine; All shows every restaurant | PASS |
+| FD-02.5 | Search and cuisine chip apply together | `tests/fd-02.spec.ts` › FD-02.5 · Search and cuisine chip apply together | BUG — spec: "with **Pizza** selected, searching *burger* shows only restaurants that match both." App: Pizza selected + burger shows Burger Palace (American, Burgers) |
+| FD-02.6 | No match shows *No restaurants found* with a hint | `tests/fd-02.spec.ts` › FD-02.6 · No match shows No restaurants found with a hint | PASS |
 
 Unmatched: none
 
